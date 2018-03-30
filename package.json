@@ -1,0 +1,23 @@
+{
+  "name": "land",
+  "version": "0.0.1",
+  "description": "just for easy deploy",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "1.11.1"
+  },
+  "dependencies": {
+    "commander": "^2.15.1",
+    "cp": "^0.2.0",
+    "download-git-repo": "^1.0.2",
+    "inquirer": "^5.2.0",
+    "mkdirp": "^0.5.1",
+    "mz": "^2.7.0",
+    "rimraf": "^2.6.2"
+  }
+}
