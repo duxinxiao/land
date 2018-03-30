@@ -2,6 +2,9 @@
   "name": "land",
   "version": "0.0.1",
   "description": "just for easy deploy",
+  "bin": {
+    "land": "./bin/land.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "npm run test"
