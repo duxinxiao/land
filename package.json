@@ -1,5 +1,5 @@
 {
-  "name": "land",
+  "name": "land-cli",
   "version": "0.0.1",
   "description": "just for easy deploy",
   "bin": {
