@@ -166,18 +166,20 @@ program
       }
     )
     gitProcess.stdout.pipe(process.stdout)
+    gitProcess.stderr.pipe(process.stdout)
 
     gitProcess.on('exit', (code) => {
       // npm install && build && cp
       const npmProcess = exec(
         `cnpm install &&
         npm run build &&
-        cp -r ${path.join(workspace, 'dist/*')} ${project.dest}`,
+        rsync -avz --delete ${path.join(workspace, 'dist/*')} ${project.dest}`,
         {
           cwd: workspace,
         }
       )
       npmProcess.stdout.pipe(process.stdout)
+      npmProcess.stderr.pipe(process.stdout)
       npmProcess.on('exit', async (code) => {
         if (code !== 0) {
           return
