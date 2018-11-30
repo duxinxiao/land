@@ -45,6 +45,11 @@ program
         name: 'dest',
         message: 'Enter deploy path',
       },
+      {
+        type: 'input',
+        name: 'buildCommand',
+        message: 'Enter node build command',
+      },
     ]
     const answers = await inquirer.prompt(questions)
     const initJson = {
@@ -54,6 +59,7 @@ program
           name: answers.name,
           repo: answers.repo,
           dest: answers.dest,
+          buildCommand: answers.buildCommand,
         },
       ],
     }
@@ -85,6 +91,11 @@ program
         type: 'input',
         name: 'dest',
         message: 'Enter deploy path',
+      },
+      {
+        type: 'input',
+        name: 'buildCommand',
+        message: 'Enter node build command',
       },
     ]
     const answers = await inquirer.prompt(questions)
@@ -171,8 +182,8 @@ program
     gitProcess.on('exit', (code) => {
       // npm install && build && cp
       const npmProcess = exec(
-        `cnpm install &&
-        npm run build &&
+        `npm ci &&
+        ${project.buildCommand} &&
         rsync -avz --delete ${path.join(workspace, 'dist/*')} ${project.dest}`,
         {
           cwd: workspace,
